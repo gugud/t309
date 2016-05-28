@@ -33,10 +33,38 @@ class CategoriesController < ApplicationController
 
 
   def update
+    update_params = category_params
+    update_params.delete :parent_id
+
+    # name不能为空
+    r_json(gen_payload(50001)) && return if update_params[:name].blank?
+
+    # 检查id是否合法
+    category = Category.find_by(id: params[:id])
+    r_json(gen_payload(50004)) && return if category.blank?
+
+    # 检查name是否冲突
+    if old = Category.find_by(name: update_params[:name])
+      r_json(gen_payload(50002)) && return unless old.id == category.id
+    end
+
+    if category.update(update_params)
+      r_json(gen_payload.merge!(data: category))
+    else
+      r_json({code: -1, msg: category.errors})
+    end
   end
 
 
   def destroy
+    category = Category.find_by(id: params[:id])
+    r_json(gen_payload(50004)) && return if category.blank?
+
+    if category.destroy
+      r_json
+    else
+      r_json({code: -1, msg: category.errors})
+    end
   end
 
 

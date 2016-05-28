@@ -1,0 +1,11 @@
+one:
+  name: 'category one'
+  parent_id: 0
+  priority: 0
+  status: true
+
+two:
+  name: 'category two'
+  parent_id: 0
+  priority: 0
+  status: true

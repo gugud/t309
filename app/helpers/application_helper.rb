@@ -14,11 +14,18 @@ module ApplicationHelper
       50001 => 'category name can not be blank',
       50002 => 'category name already exists',
       50003 => 'category parent_id is invalid',
+      50004 => 'category not exists',
     }
   end
 
   def case_status_code
     {
+      50101 => 'case title can not be blank',
+      50102 => 'case content can not be blank',
+      50103 => 'case category_id can not be blank',
+      50104 => 'case title already exists',
+      50105 => 'category not exists',
+      50106 => 'case not exists',
     }
   end
 
