@@ -5,6 +5,8 @@ gem 'rails', '~> 4.2.6'
 gem 'puma', '~> 3.4.0'
 gem 'mysql2', '>= 0.3.13', '< 0.5'
 
+gem 'kaminari'
+
 
 group :development, :test do
   gem 'awesome_print'

@@ -46,6 +46,23 @@ class CategoriesTest < ActionDispatch::IntegrationTest
   end
 
 
+  test 'get cases list' do
+    one = create_a_category
+
+    # 在该分类下创建100个案例
+    100.times do |num|
+      Case.create!(title: "标题#{num}", content: "内容#{num}", category_id: one['data']['id'])
+    end
+
+    # 取第3页，每页15条
+    get "/categories/#{one['data']['id']}/cases", { page: 3, limit: 15 }
+    assert_response :success
+    res = JSON.parse response.body
+    assert_equal 0, res['code']
+    assert_equal 15, res['data'].size
+  end
+
+
   private
 
 

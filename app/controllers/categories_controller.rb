@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :set_page_params, only: [:cases]
+
 
   def index
     categories = Category.all
@@ -69,6 +71,8 @@ class CategoriesController < ApplicationController
 
 
   def cases
+    cases = Case.where(category_id: params[:id]).page(@page).per(@limit).order(id: :desc)
+    r_json(gen_payload.merge!(data: cases))
   end
 
 
