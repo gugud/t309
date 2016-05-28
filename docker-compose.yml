@@ -1,0 +1,16 @@
+version: '2'
+services:
+  db:
+    image: daocloud.io/library/postgres:9.5.3
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=pass123456
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
