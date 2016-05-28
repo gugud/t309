@@ -13,23 +13,26 @@
 
 ActiveRecord::Schema.define(version: 20160528024732) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "cases", force: :cascade do |t|
-    t.integer  "category_id", limit: 4,     default: 0
-    t.string   "title",       limit: 191,   default: ""
-    t.text     "content",     limit: 65535
-    t.integer  "priority",    limit: 4,     default: 0
-    t.boolean  "status",                    default: true
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.integer  "category_id", default: 0
+    t.string   "title",       default: ""
+    t.text     "content"
+    t.integer  "priority",    default: 0
+    t.boolean  "status",      default: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name",       limit: 191, default: ""
-    t.integer  "parent_id",  limit: 4,   default: 0
-    t.integer  "priority",   limit: 4,   default: 0
-    t.boolean  "status",                 default: true
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.string   "name",       default: ""
+    t.integer  "parent_id",  default: 0
+    t.integer  "priority",   default: 0
+    t.boolean  "status",     default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
 end

@@ -3,7 +3,7 @@ source 'https://gems.ruby-china.org'
 
 gem 'rails', '~> 4.2.6'
 gem 'puma', '~> 3.4.0'
-gem 'mysql2', '>= 0.3.13', '< 0.5'
+gem 'pg', '~> 0.15'
 
 gem 'kaminari'
 
