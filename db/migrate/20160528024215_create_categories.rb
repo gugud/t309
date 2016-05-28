@@ -8,5 +8,8 @@ class CreateCategories < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :categories, :parent_id
+    add_index :categories, :status
   end
 end

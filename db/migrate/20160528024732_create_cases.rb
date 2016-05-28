@@ -9,5 +9,8 @@ class CreateCases < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :cases, :category_id
+    add_index :cases, :status
   end
 end

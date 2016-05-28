@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(version: 20160528024732) do
     t.datetime "updated_at",                 null: false
   end
 
+  add_index "cases", ["category_id"], name: "index_cases_on_category_id", using: :btree
+  add_index "cases", ["status"], name: "index_cases_on_status", using: :btree
+
   create_table "categories", force: :cascade do |t|
     t.string   "name",       default: ""
     t.integer  "parent_id",  default: 0
@@ -34,5 +37,8 @@ ActiveRecord::Schema.define(version: 20160528024732) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
+
+  add_index "categories", ["parent_id"], name: "index_categories_on_parent_id", using: :btree
+  add_index "categories", ["status"], name: "index_categories_on_status", using: :btree
 
 end
