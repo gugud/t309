@@ -14,7 +14,7 @@ module ApplicationHelper
       50001 => 'category name can not be blank',
       50002 => 'category name already exists',
       50003 => 'category parent_id is invalid',
-      50004 => 'category not exists',
+      50004 => 'category not exists'
     }
   end
 
@@ -25,7 +25,7 @@ module ApplicationHelper
       50103 => 'case category_id can not be blank',
       50104 => 'case title already exists',
       50105 => 'category not exists',
-      50106 => 'case not exists',
+      50106 => 'case not exists'
     }
   end
 

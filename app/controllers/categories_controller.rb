@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   def index
     categories = Category.all
     data = categories.as_json.map do |category|
-      category.merge!(total: Category.find(category['id']).cases.count)
+      category.merge!(total: Category.find_by(id: category['id']).cases.count)
     end
     r_json(gen_payload.merge!(data: data))
   end

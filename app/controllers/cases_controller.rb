@@ -1,7 +1,7 @@
 class CasesController < ApplicationController
 
   def show
-    this_case = Case.find(params[:id])
+    this_case = Case.find_by(id: params[:id])
     r_json(gen_payload(50106)) && return if this_case.blank?
 
     r_json(gen_payload.merge!(data: this_case))
